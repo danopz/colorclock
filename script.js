@@ -19,11 +19,26 @@ var render = function (h, m, s) {
         g = Math.round(m / 59 * 255),
         b = Math.round(s / 59 * 255);
 
-    h = h <= 9 ? '0' + h : h;
-    m = m <= 9 ? '0' + m : m;
-    s = s <= 9 ? '0' + s : s;
+    // var hc = ((h*100)+m)/(2300+59)*360;
+    // var hc = (((h*10000)+(m*100)+s)/235959*360);
+    var hc = (((h*10000)+(m*100)+s)/235959*360);
+    var sc = 100;
+    var lc = 50;
 
-    document.body.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+    h = h <= 9 ? '0' + h : '' + h;
+    m = m <= 9 ? '0' + m : '' + m;
+    s = s <= 9 ? '0' + s : '' + s;
+
+    // sc = parseInt(s.charAt(0)) / 5 * 10 + 90;
+    // lc = parseInt(s.charAt(1)) / 9 * 10 + 45;
+
+    // var scv = h.charAt(0) + m.charAt(0) + s.charAt(0);
+    // var lcv = h.charAt(1) + m.charAt(1) + s.charAt(1);
+    // console.log(scv,lcv);
+
+    // document.body.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+    document.body.style.backgroundColor = 'hsl(' + hc + ', ' + sc + '%, ' + lc + '%)';
+    console.log('hsl(' + hc + ', ' + sc + '%, ' + lc + '%)');
 
     // Credits to Gacek https://stackoverflow.com/a/1855903/3893182
     time.style.color = (1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255) < 0.5 ? '#000' : '#fff';
