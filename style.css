@@ -22,13 +22,13 @@ body {
     text-align: center;
 }
 
-.github-link {
+.github-corner {
     position: absolute;
     top: 0;
     right: 0;
 }
 
-.github {
+.github-corner img {
     width: 7em;
     height: 7em;
 }
